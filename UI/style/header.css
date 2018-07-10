@@ -32,13 +32,18 @@ img{
 .main {
     float: right;
   }
-  @media screen and (max-width: 500px) {
-    .header a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-    .main {
-      float: none;
-    }
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
   }
+  .main {
+    float: none;
+  }
+}
+footer { 
+  display: block;
+  background-color: #f1f1f1;
+  padding: 3px 40px
+}

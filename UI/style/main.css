@@ -32,7 +32,7 @@
     background-color: #777;
     color: white;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 5px;
     width: auto;
     border: none;
     text-align: left;
@@ -47,7 +47,7 @@
 
 .viewList {
     
-    margin: 20px 20px;
+    margin: 10px 15px;
     /*display: none; to make a collapse*/
     background-color: white;
     overflow: hidden;
@@ -74,8 +74,12 @@ label, #time{
     font-size: 25px; 
     border: 0;
 }
-footer { 
-    display: block;
-    background-color: #f1f1f1;
-    padding: 3px 40px
+@media screen and (max-width: 900px) {
+    .book {
+        width: 100%;
+        height: auto;
+        padding: 5px;
+        
+    }
+    
 }

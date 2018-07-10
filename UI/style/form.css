@@ -33,4 +33,13 @@ form .container{
     background-color: #007bff;
     border-color: #007bff;
     width: 50%
-  }
+}
+@media screen and (max-width: 900px) {
+    form {
+        width: 100%;
+        height: auto;
+        padding: 5px;
+        
+    }
+    
+}
