@@ -20,7 +20,9 @@
     <div class="row">
         <div class="book">           
                 <label>Title:</label> My trip to japan            
-                <button class="view">Read<span style="size: 1%; color: black">>></span></button>
+                <button class="view" onclick="modalDisplay()">
+                    Read<span style="size: 1%; color: black">>></span>
+                </button>
             <div class="viewList">
                 <div id="dateTime"> 
                     <label>Date and Time:</label>
@@ -36,7 +38,7 @@
                     </p>
                 </div>              
                 <div id="groupBtn">
-                    <button class="Button">Add</button>
+                    <button class="Button" onclick="modalAdd()">Add</button>
                     <button class="Button">Edit</button>
                 </div>   
             </div>           
@@ -58,7 +60,7 @@
                     </p>
                 </div>              
                 <div id="groupBtn">
-                    <button class="Button">Add</button>
+                    <button class="Button" onclick="modalAdd()">Add</button>
                     <button class="Button">Edit</button>
                 </div>   
             </div>           
@@ -80,7 +82,7 @@
                     </p>
                 </div>              
                 <div id="groupBtn">
-                    <button class="Button">Add</button>
+                    <button class="Button" onclick="modalAdd()">Add</button>
                     <button class="Button">Edit</button>
                 </div>   
             </div>           
@@ -102,17 +104,42 @@
                     </p>
                 </div>              
                 <div id="groupBtn">
-                    <button class="Button">Add</button>
+                    <button class="Button" onclick="modalAdd()">Add</button>
                     <button class="Button">Edit</button>
                 </div>   
             </div>           
         </div>        
     </div> 
+    <!-- Read div using modal-->
+    <div id="read" class="modal">
+        <form class="content" action="#">
+            <div class="head">
+                <span onclick="cancel()" class="close" title="Close Modal">&times;</span>
+                <h2>My diary story</h2>
+            </div>
+            <div class="container">
+                <label>Title:</label>
+                <input type="text" name="title" placeholder="Enter title">
+                <label for="dateTime"><b>Time and Date</b></label>
+                <input type="datetime-local" placeholder="Enter date and time" name="dateTime" required>
+                <label for="subject"><b>Story</b></label>
+                <textarea placeholder="Enter your story"></textarea>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="cancel()" class="cancelbtn">
+                    Cancel
+                </button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+            </div>
+        </form>
+    </div>
+    
     <footer>
         <p>Posted by: Oluwasegun</p>
         <p>Contact information: <a href="mailto:segsamos@gmail.com">segsamos@gmail.com</a>.</p>
-      </footer>
-        
+    </footer>
+    
     <script src="javascript/script.js"></script>
 </body>
 </html>
