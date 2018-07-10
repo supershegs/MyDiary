@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Diary Application</title>
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/form.css">
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="logo">MyDiary</a>
+            <div class="main">
+                <a href="index.html">My diary</a>
+                <a href="signup.html">Sign up</a>
+                <a class="active" href="signin.html">Sign in</a>
+            </div>
+    </div>
+    <div class="container" align="center">
+        <h1>Login</h1>
+    </div>
+    <div class="container" align="center">
+        <form action="#">
+            <div class="container">
+                <label for="username" class="label">Username:</label>
+                <input type="text" id="username" placeholder="Enter Username" name="username"class="input" required>
+            </div>
+            <div class="container">
+                <label for="password" class="label">Password:</label>
+                <input type="password" id="password" placeholder="Enter Password" name="password" class="input" required>
+            </div>
+            <div class="container">
+                <button type="submit" class="button">Signin</button>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <span class="psw">Not yet a user please click on <a href="signin.html">Register</a></span>
+            </div>
+        </form>       
+    </div>
+
+</body>
+</html>

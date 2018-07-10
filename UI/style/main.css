@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box
+}
+.book {
+    float: left;
+    border: 3px solid #f1f1f1;
+    width: 50%;
+    height: 300px;
+    padding: 10px  
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.Button {
+    width: auto;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 5px 18px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #007bff;
+}
+#deleteBtn {
+    width: auto;
+    padding: 5px 18px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #f44336;
+}
+.view{
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: auto;
+    border: none;
+    text-align: left;
+    outline: none;
+    
+    float: right;
+}
+#list{
+   
+    color: #f1f1f1 
+}
+
+.viewList {
+    
+    margin: 20px 20px;
+    /*display: none; to make a collapse*/
+    background-color: white;
+    overflow: hidden;
+}
+#title{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 0px 20px;
+    display: inline-block;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 25px;
+    background-color: #777;
+    color: white
+}
+#dateTime, #story{
+    padding: 10px
+}
+#groupBtn{
+    float: right
+}
+
+label, #time{
+    font-size: 25px; 
+    border: 0;
+}
