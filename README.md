@@ -7,5 +7,5 @@ Users can view the contents of a diary entry. 
 Users can add or modify an entry. 
 
 Having two section
-The front-end and backend
+The front-end and back-end
 the UI design are inside the UI folder
