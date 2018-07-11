@@ -13,6 +13,7 @@
     display: table;
     clear: both;
 }
+
 .Button {
     width: auto;
     display: inline-block;
@@ -27,6 +28,9 @@
     border-radius: 0.25rem;
     color: #fff;
     background-color: #007bff;
+}
+button:hover {
+    opacity: 0.8;
 }
 .view{
     background-color: #777;
@@ -63,7 +67,26 @@
     background-color: #777;
     color: white
 }
+.book .viewList #story p, .book .viewList #story2 p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.book .viewList #story3 p, .book .viewList #story4 p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 #dateTime, #story{
+    padding: 10px
+}
+#story2, #story3{
+    padding: 10px
+}
+#story4{
     padding: 10px
 }
 #groupBtn{
@@ -71,6 +94,15 @@
 }
 
 label, #time{
+    font-size: 25px; 
+    border: 0;
+    
+}
+#time2, #time3{
+    font-size: 25px; 
+    border: 0;
+}
+#time4{
     font-size: 25px; 
     border: 0;
 }
@@ -83,31 +115,13 @@ label, #time{
     }
     
 }
-/*     ? */
-
-
-
-
-button:hover {
-    opacity: 0.8;
-}
-
-
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
+/* modal styling start  */
 
 .head {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
 }
-
-
-
 .modal {
     display: none; 
     position: fixed; 
@@ -120,6 +134,7 @@ button:hover {
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
     padding-top: 10px;
+    
 }
 
 .content {
@@ -129,8 +144,8 @@ button:hover {
     width: 50%; 
     height: auto;
 }
-.container {
-    padding: 16px;
+.modal form .container {
+    padding: 15px;
 }
 .cool{
     width: auto;
@@ -152,7 +167,7 @@ button:hover {
     cursor: pointer;
 }
 
-.modal form  .container input {
+.modal form .container input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -162,8 +177,29 @@ button:hover {
 }
 textarea{
    width: 100%;
-   height: 300px;
+   height: 270px;
 }
+.modal form .container .button{
+    width: auto;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 5px 18px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #007bff;
+    float: right;
+}
+.modal form .container button:hover {
+    opacity: 0.8;
+}
+
+
 @media screen and (max-width: 300px) {
     span.psw {
        display: block;
