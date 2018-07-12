@@ -221,6 +221,14 @@ label, #time{
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+.modal form .container textarea#addText, .modal form .container textarea#editStory  {
+    width: 100%; 
+    height: 270px
+}
+.modal form .container textarea#editTitle, .modal form .container textarea#editTime{
+    width: 50%; 
+    height: auto
+}
 .modal form .container .button{
     width: auto;
     display: inline-block;

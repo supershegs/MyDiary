@@ -34,6 +34,9 @@ form .container{
     border-color: #007bff;
     width: 50%
 }
+#foot{
+    background-color:#f1f1f1
+}
 @media screen and (max-width: 900px) {
     form {
         width: 100%;
