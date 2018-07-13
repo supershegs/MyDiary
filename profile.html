@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Diary Application</title>
+    <link rel="stylesheet" href="style/reminder.css">
+    <link rel="stylesheet" href="style/header.css">
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="logo">MyDiary</a>
+        <div class="main">
+            <a href="index.html">My diary</a>
+            <a href="signup.html">Sign up</a>
+            <a href="signin.html">Sign in</a>
+            <a class="active" id="drop" href="profile.html">User Profile</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="profile">
+            <div class="data">
+                <img src="img/image.png" alt="Name picture">
+            </div>
+            <div class="data">
+                <label>Name: </label> 
+                <span class="title">Joseph Olajide</span>
+            </div>
+            <div class="data">
+                <label>Number of diary entries: </label> 
+                <span class="title">12</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="reminder">
+            <h2 align="center">Diary reminder setting</h1>
+            <p>Set a reminder for diary entry at <time>7:30pm</time> every morning.</p>
+            <time datetime="2018-09-07 19:30">Diary Entry reminder</time>.</p>
+            <input type="checkbox" onclick="remindr()" id="myCheck" name="reminder"> Set reminder to 7:30pm       
+        </div>        
+    </div>
+    <script src="javascript/reminder.js"></script>
+</body>
+</html>
