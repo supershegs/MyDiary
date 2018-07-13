@@ -5,7 +5,7 @@ var hr = d.getHours();
 var mt = d.getMinutes();
 var set = hr + ":" + mt
 document.getElementById("dems").innerHTML = set;
-function reminder(){
+function remindr(){
     if (checkBox.checked == true){
         alert("To set the diary reminder to  7:30pm every day");
         var time = 19 + ":" + 30
