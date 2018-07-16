@@ -1,0 +1,19 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "Project Name: My Diary\r Project Overview:  MyDiary is an online journal where users can pen down their thoughts and feelings.  \r     Required Features \r Users can create an account and log in.  \r Users can view all entries to their diary.  \r Users can view the contents of a diary entry.  \r Users can add or modify an entry.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supershegs/MyDiary.git"
+  },
+  "author": "Oluwasegun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supershegs/MyDiary/issues"
+  },
+  "homepage": "https://github.com/supershegs/MyDiary#readme"
+}
