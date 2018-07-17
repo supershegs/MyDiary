@@ -4,7 +4,7 @@ let app = express();
 const port = 3000;
 
 app.get('/', (req,res)=>{
-    res.status(200).send({"message": "API is now running"});
+    res.status(200).send({"message": "API  now is running"});
 });
 
 app.listen(port, ()=>{
