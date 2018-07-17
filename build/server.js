@@ -10,9 +10,9 @@ var app = (0, _express2.default)();
 var port = 3000;
 
 app.get('/', function (req, res) {
-    res.status(200).send({ "message": "API is running" });
+    res.status(200).send({ "message": "API is now running" });
 });
 
 app.listen(port, function () {
-    console.log("server is running on port", { port: port });
+    console.log("server is running on port", port);
 });

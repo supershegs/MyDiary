@@ -4,9 +4,9 @@ let app = express();
 const port = 3000;
 
 app.get('/', (req,res)=>{
-    res.status(200).send({"message": "API is running"});
+    res.status(200).send({"message": "API is now running"});
 });
 
 app.listen(port, ()=>{
-    console.log("server is running on port", {port})
+    console.log("server is running on port", port)
 });
