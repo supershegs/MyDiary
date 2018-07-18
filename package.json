@@ -5,14 +5,11 @@
   "main": "app.js",
   "scripts": {
     "server": "babel server --out-dir build",
-    "start": "node build/server.js",
+    "start-server": "node build/server.js",
     "watch": "babel-watch server/server.js",
     "lint": "eslint server/**/*.js",
-
-    "start": "node ./build/server.js",
-    "watch": "babel-watch server/server.js",
-
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-init": "node node_modules/jasmine/bin/jasmine.js init",
+    "test": "node node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -25,14 +22,17 @@
   },
   "homepage": "https://github.com/supershegs/MyDiary#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.12.0"
+    "eslint-plugin-import": "^2.12.0",
+    "jasmine": "^3.1.0"
   }
 }
