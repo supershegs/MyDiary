@@ -4,9 +4,10 @@
   "description": "Project Name: My Diary\r Project Overview:  MyDiary is an online journal where users can pen down their thoughts and feelings.  \r     Required Features \r Users can create an account and log in.  \r Users can view all entries to their diary.  \r Users can view the contents of a diary entry.  \r Users can add or modify an entry.",
   "main": "app.js",
   "scripts": {
-    "server": "babel server.js --out-dir build",
-    "start-server": "node build/server.js",
+    "build": "babel server.js --out-dir build",
+    "start-build": "node build/server.js",
     "watch": "babel-watch server.js",
+    "server": "node server.js",
     "lint": "eslint **/*.js",
     "test-init": "node node_modules/jasmine/bin/jasmine.js init",
     "test": "node node_modules/jasmine/bin/jasmine.js"
@@ -23,10 +24,12 @@
   "homepage": "https://github.com/supershegs/MyDiary#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
     "request": "^2.87.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",

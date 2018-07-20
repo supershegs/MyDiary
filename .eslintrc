@@ -9,6 +9,11 @@
         "no-trailing-spaces":"off",
         "import/order": "off"
     },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
     "env": {
         "browser": true,
         "node": true,
