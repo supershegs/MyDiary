@@ -2,7 +2,7 @@
     <div class="header">
         <a href="#" class="logo">MyDiary</a>
         <div class="main">
-            <a class="active" href="/api/v1/index">My diary</a>
+            <a class="active" href="/api/v1/entries">My diary</a>
             <a href="/api/v1/signup">Sign up</a>
             <a href="/api/v1/signin">Sign in</a>
             <a href="/api/v1/profile">User profile</a>
@@ -275,21 +275,30 @@
                 </div>   
             </div>           
         </div>
+        <div class="book">
+            <p>{{title}}</p>
+            <p>{{date}}</p>
+            <p>{{list}}</p>           
+            <div id="groupBtn">
+                <button class="Button" onclick="modalEdit1()">Edit</button>
+            </div>              
+        </div>
     </div> 
     <!-- Read div using modal-->
     <div id="add" class="modal">
-        <form class="content" action="#" style="background-color:#f1f1f1">
+        <form class="content" action="/entries" method="POST">
             <div class="head">
                 <span onclick="cancel()" class="close" title="Close Modal">&times;</span>
                 <h2>Add to the diary</h2>
             </div>
             <div class="container">
                 <label>Title:</label>
+                <input type="hidden" id="id" name="id">
                 <input type="text" name="title" placeholder="Enter title" required>
                 <label for="dateTime"><b>Time and Date</b></label>
                 <input type="datetime-local" placeholder="Enter date and time" name="dateTime" required>
                 <label for="subject"><b>Story</b></label>
-                <textarea id="addText" placeholder="Enter your story"></textarea>
+                <textarea id="addText" placeholder="Enter your story" name="story"></textarea>
                 <!--<button type="button" onclick="cancel()" class="button">Cancel</button>-->
                 <button type="submit" class="button">Submit</button>               
                 <div class="container" ></div>
@@ -297,22 +306,22 @@
         </form>
     </div>
     <div id="view" class="modal">
-        <form class="content" action="#"style="background-color:#f1f1f1">
+        <form class="content" action="/entries/:{{id}}" method="GET">
             <div class="head">
                 <span onclick="cancel()" class="close" title="Close Modal">&times;</span>
                 <h2>My diary story</h2>
             </div>
             <div class="container">
-                <p id="displayTitle"></p>
-                <p id="displayTime"></p>
-                <p id="displayStory"></p>
+                <p id="displayTitle">{{title}}</p>
+                <p id="displayTime">{{date}}</p>
+                <p id="displayStory">{{list}}</p>
                 <button type="button" onclick="cancel()" class="button">Ok</button>
             </div>
             <div class="container" ></div>
         </form>
     </div>
     <div id="edit" class="modal">
-            <form class="content" action="#"style="background-color:#f1f1f1">
+            <form class="content" action="/entries/:{{id}}" method="PUT">
                 <div class="head">
                     <span onclick="cancel()" class="close" title="Close Modal">&times;</span>
                     <h2>Edit my diary story</h2>
