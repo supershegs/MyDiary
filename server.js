@@ -1,9 +1,15 @@
 import express from 'express';
+
+import expressHBS from 'express-handlebars';
+
 import firstApi from './routes/ver_Api_1/index';
 import secondApi from './routes/ver_Api_2/index';
 
 const app = express();
 const port = 3000;
+
+app.engine('handlebars', expressHBS({ defaultLayout: 'header' }));
+app.set('view engine', 'handlebars');
 
 app.use('/api/v1', firstApi);
 app.use('/api/v2', secondApi);
