@@ -6,13 +6,11 @@ import firstApi from './routes/ver_Api_1/index';
  
 const app = express();
 const port = 3000;
-
  
 app.engine('handlebars', expressHBS({ defaultLayout: 'header' }));
 app.set('view engine', 'handlebars');
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
-
 
 app.use('/api/v1', firstApi);
 // app.use('/api/v2', secondApi);

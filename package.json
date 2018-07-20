@@ -23,8 +23,11 @@
   },
   "homepage": "https://github.com/supershegs/MyDiary#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "morgan": "^1.9.0",
     "request": "^2.87.0"
   },
   "devDependencies": {
