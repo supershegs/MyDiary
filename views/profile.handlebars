@@ -1,0 +1,40 @@
+    <div class="header">
+        <a href="#" class="logo">MyDiary</a>
+        <div class="main">
+            <a href="/api/v1/index">My diary</a>
+            <a href="/api/v1/signup">Sign up</a>
+            <a href="/api/v1/signin">Sign in</a>
+            <a class="active" href="/api/v1/profile">User profile</a>
+            <a href="/api/v1/index/#" onclick="modalAdd()">View diary</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="profile">
+            <div class="data">
+                <img src="/public/img/image.png" alt="Name picture">
+            </div>
+            <div class="data">
+                <label>Name: </label> 
+                <span class="title">Amos Oluwasegun</span>
+            </div>
+            <div class="data">
+                <label>Number of diary entries: </label> 
+                <span class="title">12</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="reminder">
+            <h2 align="center">Diary reminder setting</h1>
+            <p>Set a reminder for diary entry at <time>7:30pm</time> every morning.</p>
+            <time datetime="2018-09-07 19:30">Diary Entry reminder</time>.</p>
+            <input type="checkbox" onclick="remindr()" id="myCheck" name="reminder"> Set reminder to 7:30pm       
+        </div>        
+    </div>
+    <div class="all">
+        <footer>
+            <p>Posted by: Oluwasegun</p>
+            <p>Contact information: <a href="mailto:segsamos@gmail.com">segsamos@gmail.com</a>.</p>
+        </footer>
+    </div>
+
