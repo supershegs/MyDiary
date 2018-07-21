@@ -1,21 +1,22 @@
 import EntryModel from '../model/EntriesModel';
 
 const Entries = {
-    
     create(req, res) {
-        return res.send({ message: 'Add an Entry' });
+        const newEntry = EntryModel.add(req.body);
+        return res.send(newEntry);
     },
     getAll(req, res) {
-        return res.send({ message: 'Get All Entries' });
+        const allEntries = EntryModel.findAll();
+        return res.send(allEntries);
     },
     getOne(req, res) {
-        return res.send({ message: 'Get One Entry' });
+        console.log(req.params.id);
+        const anEntry = EntryModel.findOne(req.params.id);
+        return res.send(anEntry);
     },
     update(req, res) {
-        return res.send({ message: 'Update One Entry' });
-    },
-    delete(req, res) {
-        return res.send({ message: 'Delete an Entry' });
+        const editEntry = EntryModel.edit(req.params.id, req.body);
+        return res.send({ editEntry });
     },
 };
 
