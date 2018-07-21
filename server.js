@@ -3,17 +3,12 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressHBS from 'express-handlebars';
 import firstApi from './routes/ver_Api_1/index';
 // import secondApi from './routes/ver_Api_2/index';
  
 const app = express();
 const port = 3000;
  
-app.engine('handlebars', expressHBS({ defaultLayout: 'header' }));
-app.set('view engine', 'handlebars');
-
-app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
