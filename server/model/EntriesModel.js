@@ -13,9 +13,9 @@ class EntriesModel {
             story: data.story,
             createdDate: moment(),
             modifiedDate: moment(),
-         };
-        this.entries.push(entry);
-        return entry;
+        };
+        this.entries.push(entry); 
+        return entry; 
     }
 
     findAll() {
@@ -23,7 +23,7 @@ class EntriesModel {
     }
 
     findOne(id) {
-        for (let i = 0; i < this.entries; i += 1) {
+        for (let i = 0; i < this.entries.length; i += 1) {
             if (this.entries[i].id === id) {
                 return this.entries[i];
             }
@@ -32,7 +32,7 @@ class EntriesModel {
     }
 
     edit(id, data) {
-        for (let i = 0; i < this.entries; i += 1) {
+        for (let i = 0; i < this.entries.length; i += 1) {
             if (this.entries[i].id === id) {
                 this.entries[i].title = data.title || this.entries[i].title;
                 this.entries[i].story = data.story || this.entries[i].story;
