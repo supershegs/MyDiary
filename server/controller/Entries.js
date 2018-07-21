@@ -1,13 +1,15 @@
+import EntryModel from '../model/EntriesModel';
 
 const Entries = {
+    
     create(req, res) {
-        return res.send({ message: 'Create an Entry' });
+        return res.send({ message: 'Add an Entry' });
     },
     getAll(req, res) {
         return res.send({ message: 'Get All Entries' });
     },
     getOne(req, res) {
-        return res.send({ message: 'Get One Entries' });
+        return res.send({ message: 'Get One Entry' });
     },
     update(req, res) {
         return res.send({ message: 'Update One Entry' });
