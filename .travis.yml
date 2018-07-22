@@ -3,5 +3,9 @@ node_js:
 - "stable"
 install:
   - npm install
+  - npm install newman
 script: 
   - npm start
+  — node_modules/.bin/newman  run test/postman/ApiEndpiontTesting.postman_collection.js
+
+
