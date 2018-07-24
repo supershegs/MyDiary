@@ -9,3 +9,7 @@ Users can add or modify an entry. 
 Having two section
 The front-end and back-end
 the UI design are inside the UI folder
+
+Task
+Write tests for the API endpoints
+Ensure to test all endpoints and see that they work using Postman.

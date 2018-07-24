@@ -1,66 +1,60 @@
 import request from 'request';
-import { closeSever } from '../server';
 import entryModelTest from '../server/model/EntriesModel';
+import { closeServer } from '../server';
+
 
 const entriesUrl = 'http://localhost:3000/api/v1/entries';
 const entryUrl = 'http://localhost:3000/api/v1/entries/:id';
-describe('To test entries server', () => {
+describe('To post an entry', () => {
   describe('GET /api/v1/entries', () => {
-    it('to perform get all entries', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
-        expect(response.statusCode).toBe(200);
-        done();
-      });
-    });
-    it('to get all entries body', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
-        expect(body).toBe(entryModelTest.findAll());
+    it('To Add an entry body', (done) => {
+      request.post(entriesUrl, (error, response, data) => {
+        const entriesAdd = entryModelTest.add(data);  
+        const content = '';
+        expect(content).toEqual(entriesAdd);
+        console.log('Test passed');
         done();
       });
     });
   });
 });
-describe('To post entries server', () => {
+describe('To get all entries ', () => {
   describe('GET /api/v1/entries', () => {
-    it('to post an entry', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
-        expect(response.statusCode).toBe(200);
-        done();
-      });
-    });
-    it('to pass the post entry body', (done) => {
-      request.post(entriesUrl, (error, response, body, data) => {
-        expect(body).toBe(entryModelTest.add(data));
+    it('To get All entries body', (done) => {
+      request.get(entriesUrl, (error, response) => {
+        const entriesGetAll = entryModelTest.findAll();  
+        const content = ['', ''];
+        expect(content).toEqual(entriesGetAll);
+        console.log('Test passed');
         done();
       });
     });
   });
 });
-describe('GET /api/v1/entries/id', () => {
-  it('to perform add entry', (done) => {
-    request.get(entriesUrl, (error, response, body) => {
-      expect(response.statusCode).toBe(200);
-      done();
-    });
-  });
-  it('to get an entry body', (done) => {
-      request.get(entriesUrl, (error, response, body, id) => {
-        expect(body).toBe(entryModelTest.findOne(id));
+describe('To get an entry server', () => {
+  describe('GET /api/v1/entries/:id', () => {
+    it('To get an entry', (done) => {
+      request.get(entryUrl, (error, response, id) => {
+        const getAnEntry = entryModelTest.findOne(id);  
+        const content = {};
+        expect(content).toEqual(getAnEntry);
+        console.log('Test passed');
         done();
+      });
     });
   });
 });
-describe('GET /api/v1/entries/id', () => {
-  it('to perform edit on an entry', (done) => {
-    request.get(entriesUrl, (error, response, body) => {
-      expect(response.statusCode).toBe(200);
-      done();
-    });
-  });
-  it('to get the edited entry body', (done) => {
-      request.put(entriesUrl, (error, response, body, id, data) => {
-        expect(body).toBe(entryModelTest.edit(id, data));
+describe('To put an entry server', () => {
+  describe('GET /api/v1/entries/:id', () => {
+    it('To edit entry', (done) => {
+      request.put(entryUrl, (error, response, id, data) => {
+        const getEdit = entryModelTest.edit(id, data);  
+        const content = {};
+        expect(content).toEqual(getEdit);
+        console.log('Test passed');
+        closeServer();
         done();
+      });
     });
   });
 });

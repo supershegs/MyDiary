@@ -3,6 +3,7 @@ import EntryModel from '../model/EntriesModel';
 const Entries = {
     create(req, res) {
         const newEntry = EntryModel.add(req.body);
+        console.log(req.body);
         return res.send(newEntry);
     },
     getAll(req, res) {

@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "458145ac-ccf4-4ac2-b2c3-c1736245e2c5",
+		"name": "getEntry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/v1/entries/8446175b-5f67-4830-917f-7e37d2bf2c74",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d9e876f-8a03-444a-b429-28148dd6333c",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"pm.test(\"respose is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"post2\",\n\t\"story\": \"An empty arrays\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/entries/8446175b-5f67-4830-917f-7e37d2bf2c74",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"entries",
+						"8446175b-5f67-4830-917f-7e37d2bf2c74"
+					]
+				},
+				"description": "To get an entry fron the list"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/v1/entries/8446175b-5f67-4830-917f-7e37d2bf2c",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d9e876f-8a03-444a-b429-28148dd6333c",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"pm.test(\"respose is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"post2\",\n\t\"story\": \"An empty arrays\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/entries/8446175b-5f67-4830-917f-7e37d2bf2c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"entries",
+						"8446175b-5f67-4830-917f-7e37d2bf2c"
+					]
+				},
+				"description": "To get an entry with wrong user id"
+			},
+			"response": []
+		}
+	]
+}

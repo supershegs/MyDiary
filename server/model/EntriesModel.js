@@ -7,14 +7,19 @@ class EntriesModel {
     }
 
     add(data) {
-        const entry = {
+        let entry = {
             id: uuidV4(),
             title: data.title,
             story: data.story,
             createdDate: moment(),
             modifiedDate: moment(),
-        };
-        this.entries.push(entry); 
+        };  
+        if (data.title === undefined || data.story === undefined) {
+            entry = '';
+            this.entries.push(entry);  
+        } else {
+            this.entries.push(entry); 
+        }                              
         return entry; 
     }
 
