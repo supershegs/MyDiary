@@ -1,4 +1,4 @@
-{
+{  
   "spec_dir": "spec",
   "spec_files": [
     "**/*[sS]pec.js"
@@ -8,5 +8,6 @@
     "../node_modules/babel-register/lib/node.js"
   ],
   "stopSpecOnExpectationFailure": false,
-  "random": true
+  "random": false,
+  "seed": 29971
 }

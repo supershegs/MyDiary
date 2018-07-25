@@ -1,66 +1,88 @@
 import request from 'request';
-import { closeSever } from '../server';
-import entryModelTest from '../server/model/EntriesModel';
+import EntriesModel, { entries } from '../server/model/EntriesModel';
+import { closeServer } from '../server';
+import moment from 'moment';
+import uuidV4 from 'uuid/v4';
+ 
+ const entryOne = { 
+  id: uuidV4(),
+  title: 'My new lodge', 
+  story: 'My new home is located at',
+  createdDate: moment(),
+  modifiedDate: moment(),
+};
+const entryTwo = { 
+  id: uuidV4(),
+  title: 'My new car', 
+  story: 'My new car is painted black',
+  createdDate: moment(),
+  modifiedDate: moment(),
+};
+const entryThree = { 
+  id: uuidV4(),
+  title: 'My new bag', 
+  story: 'My new bag is expensive',
+  createdDate: moment(),
+  modifiedDate: moment(),
+};
+entries.push(entryOne, entryTwo);
 
 const entriesUrl = 'http://localhost:3000/api/v1/entries';
 const entryUrl = 'http://localhost:3000/api/v1/entries/:id';
-describe('To test entries server', () => {
+
+describe('To POST an entry', () => {
   describe('GET /api/v1/entries', () => {
-    it('to perform get all entries', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
+    const init = EntriesModel.add(entryThree);
+    it('To add an entry', (done) => {
+      request.post(entriesUrl, (error, response) => {
         expect(response.statusCode).toBe(200);
-        done();
-      });
-    });
-    it('to get all entries body', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
-        expect(body).toBe(entryModelTest.findAll());
+        expect(entryThree.id).not.toBe(init.id);
+        expect(entryThree.title).toBe(init.title);
+        expect(entryThree.story).toBe(init.story);
+        expect(entryThree.createdDate).not.toBe(init.createdDate);
+        expect(entryThree.modifiedDate).not.toBe(init.modifiedDate);
         done();
       });
     });
   });
 });
-describe('To post entries server', () => {
+
+describe('To GET all entries', () => {
   describe('GET /api/v1/entries', () => {
-    it('to post an entry', (done) => {
-      request.get(entriesUrl, (error, response, body) => {
+    const init = EntriesModel.findAll();
+    const list = entries;
+    it('To GET all entries', (done) => {
+      request.post(entriesUrl, (error, response) => {
         expect(response.statusCode).toBe(200);
-        done();
-      });
-    });
-    it('to pass the post entry body', (done) => {
-      request.post(entriesUrl, (error, response, body, data) => {
-        expect(body).toBe(entryModelTest.add(data));
+        expect(list).toBe(init);
         done();
       });
     });
   });
 });
-describe('GET /api/v1/entries/id', () => {
-  it('to perform add entry', (done) => {
-    request.get(entriesUrl, (error, response, body) => {
-      expect(response.statusCode).toBe(200);
-      done();
-    });
-  });
-  it('to get an entry body', (done) => {
-      request.get(entriesUrl, (error, response, body, id) => {
-        expect(body).toBe(entryModelTest.findOne(id));
+describe('To GET an entry', () => {
+  describe('GET /api/v1/entries/:id', () => {
+    const init = EntriesModel.findOne(entries[0].id);
+    it('To GET an entry body', (done) => {
+      request.post(entriesUrl, (error, response) => {
+        expect(response.statusCode).toBe(200);
+        expect(entries.id).toBeUndefined();
+        expect(init.title).toBe('My new lodge');
         done();
+      });
     });
   });
 });
-describe('GET /api/v1/entries/id', () => {
-  it('to perform edit on an entry', (done) => {
-    request.get(entriesUrl, (error, response, body) => {
-      expect(response.statusCode).toBe(200);
-      done();
-    });
-  });
-  it('to get the edited entry body', (done) => {
-      request.put(entriesUrl, (error, response, body, id, data) => {
-        expect(body).toBe(entryModelTest.edit(id, data));
+describe('To Edit an entry', () => {
+  describe('GET /api/v1/entries/:id', () => {
+    const init = EntriesModel.edit(entries[1].id, entries[1]);
+    it('To PUT entry body', (done) => {
+      request.put(entriesUrl, (error, response) => {
+        expect(response.statusCode).toBe(404);
+        console.log('Test passed');
         done();
+      });
     });
   });
 });
+
