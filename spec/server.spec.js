@@ -1,95 +1,82 @@
-import request from 'request';
-import EntriesModel, { entries } from '../server/model/EntriesModel';
-import { closeServer } from '../server';
-import moment from 'moment';
-import uuidV4 from 'uuid/v4';
- 
- const entryOne = { 
-  id: uuidV4(),
+import supertest from 'supertest';
+import app from '../server';
+import EntriesModel from '../server/model/EntriesModel';
+
+const entry = { 
   title: 'My new lodge', 
   story: 'My new home is located at',
-  createdDate: moment(),
-  modifiedDate: moment(),
 };
-const entryTwo = { 
-  id: uuidV4(),
-  title: 'My new car', 
-  story: 'My new car is painted black',
-  createdDate: moment(),
-  modifiedDate: moment(),
-};
-const entryThree = { 
-  id: uuidV4(),
-  title: 'My new bag', 
-  story: 'My new bag is expensive',
-  createdDate: moment(),
-  modifiedDate: moment(),
-};
-entries.push(entryOne, entryTwo);
+const Request = supertest(app);
+
 
 const entriesUrl = 'http://localhost:3000/api/v1/entries';
-const entryUrl = 'http://localhost:3000/api/v1/entries/:id';
 
-describe('To POST an entry', () => {
-  describe('GET /api/v1/entries', () => {
-    const init = EntriesModel.add(entryThree);
-    it('To add an entry', (done) => {
-      request.post(entriesUrl, (error, response) => {
-        expect(response.statusCode).toBe(200);
-        expect(entryThree.id).not.toBe(init.id);
-        expect(entryThree.title).toBe(init.title);
-        expect(entryThree.story).toBe(init.story);
-        expect(entryThree.createdDate).not.toBe(init.createdDate);
-        expect(entryThree.modifiedDate).not.toBe(init.modifiedDate);
-        console.log('test passed');
+describe('Entry API Unit Tests', () => {
+  let inputEntryId = '';
+  beforeAll((done) => {
+    Request.post('/api/v1/entries')
+      .send(entry)
+      .end((error, request) => {
+        inputEntryId = request.body.id;
         done();
       }); 
-    });
   });
-});
-
-describe('To GET all entries', () => {
   describe('GET /api/v1/entries', () => {
-    const init = EntriesModel.findAll();
-    const list = entries;
-    it('To GET all entries', (done) => {
-      request.post(entriesUrl, (error, response) => {
-        expect(response.statusCode).toBe(200);
-        expect(list).toBe(init);
-        console.log('test passed');
-        done();
-      });
+    it('Add an entry to diary list', (done) => {
+      Request.post('/api/v1/entries')
+        .send(entry)
+        .end((error, response) => {
+          expect(response.status).toEqual(200);
+          expect(response.body.id).toBeTruthy();
+          expect(response.body.title).toEqual(entry.title);
+          expect(response.body.story).toEqual(entry.story);
+          done();
+        });
     });
   });
-});
-describe('To GET an entry', () => {
-  describe('GET /api/v1/entries/:id', () => {
-    const init = EntriesModel.findOne(entries[0].id);
-    it('To GET an entry body', (done) => {
-      request.post(entriesUrl, (error, response) => {
-        expect(response.statusCode).toBe(200);
-        expect(entries.id).toBeUndefined();
-        expect(init.title).toBe('My new lodge');
-        console.log('test passed');
-        done();
-      });
+
+  describe('GET an entry /api/v1/entries/:id', () => {
+    it('Get an entry with a valid entryId', (done) => {
+      Request.get(`/api/v1/entries/${inputEntryId}`)
+        .end((error, response) => {
+          console.log('id here === ', inputEntryId);
+          console.log(response.body);
+          expect(response.status).toEqual(200);
+          expect(response.body.id).toEqual(inputEntryId);
+          expect(response.body.title).toEqual(entry.title);
+          expect(response.body.story).toEqual(entry.story);
+          done();
+        });
     });
   });
-});
-describe('To Edit an entry', () => {
-  describe('GET /api/v1/entries/:id', () => {
-    const data = { title: 'A good day', story: 'What a blessed day' };
-    const init = EntriesModel.edit(entries[1].id, data);
-    it('To PUT entry body', (done) => {
-      request.put(entriesUrl, (error, response) => {
-        expect(response.statusCode).toBe(404);
-        expect(entryTwo.id).toEqual(init.id);
-        expect(entryTwo.title).toBe(init.title);
-        expect(entryTwo.story).toBe(init.story);
-        expect(entryTwo).toBe(init);
-        done();
-        console.log('test passed');
-      });
+  
+  describe('PUT /api/v1/entries/:id', () => {
+    it('edit the title of an entry', (done) => {
+      Request.put(`/api/v1/entries/${inputEntryId}`)
+        .send({ title: 'updated title' })
+        .end((error, response) => {
+          expect(response.status).toEqual(200);
+          expect(response.body.editEntry.id).toEqual(inputEntryId);
+          expect(response.body.editEntry.title).toEqual('updated title');
+          expect(response.body.editEntry.story).toEqual(entry.story);
+          done();
+        });
+    });
+  });
+  describe('GET All Entries - GET /api/v1/entries', () => {
+    // Use this to add multiple entries
+    EntriesModel.add({ title: 'entry1', story: 'entry1 story' });
+    EntriesModel.add({ title: 'entry2', story: 'entry2 story' });
+    EntriesModel.add({ title: 'entry3', story: 'entry3 story' });
+
+    it('To get All entries', (done) => {
+      Request.get('/api/v1/entries')
+        .end((error, response) => {
+          expect(response.status).toEqual(200);
+          expect(response.body.length).toBeGreaterThanOrEqual(3);
+          expect(response.body[1].title).toEqual('entry2');
+          done();
+        });
     });
   });
 });

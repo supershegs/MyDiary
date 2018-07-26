@@ -1,53 +1,78 @@
 import moment from 'moment';
 import uuidV4 from 'uuid/v4';
 
-const entries = [];
+/**
+ * Class representing a EntriesModel.
+ */
 class EntriesModel {
+    /**
+     * create a EntriesModel
+     * @param {object} data 
+     */
+    constructor(data) {
+        this.entries = [];
+    }
+    /**
+     * To Add object data-entry
+     * @param {object} data
+     * @return {object} entry
+     */
+
     add(data) {
-        let entry = {
+        const entry = {
             id: uuidV4(),
             title: data.title,
             story: data.story,
             createdDate: moment(),
             modifiedDate: moment(),
         };  
-        if (data.title === undefined || data.story === undefined) {
-            entry = {};
-            entries.push();
-        } else if (data.title && data.story) {
-            entries.push(entry); 
-        }                              
-        return entry; 
-    }
+        this.entries.push(entry); 
+        return entry;
+    }                       
+    /**
+     * Get all entries
+     * @return {object} entries 
+     */
 
     findAll() {
-        return entries;
+        return this.entries;
     }
+    /**
+     * get an entry with id
+     * @param {string} id
+     * @return {object} entryOne
+     */
 
     findOne(id) {
-        for (const entry of entries) {
+        let entryOne = {};
+        this.entries.forEach((entry, index) => {
             if (entry.id === id) {
-                return entry;
-            }     
-        }   
-        return {};   
+                entryOne = entry;
+            }
+        });
+        return entryOne;
     }
+    /**
+     * 
+     * To edit an entry with an id
+     * @param {string} id
+     * @param {object} data
+     * @return {object} entryEdit
+     */
 
     edit(id, data) {
-        for (let entry of entries) {
+        let entryEdit = {};
+        this.entries.forEach((entry, index) => {
             if (entry.id === id) {
-                entry.title = data.title || entry.title;
-                entry.story = data.story || entry.story;
-                entry.modifiedDate = moment();
-                return entry;
+                entryEdit = entry;
+                entryEdit.title = data.title || entryEdit.title;
+                entryEdit.story = data.story || entryEdit.story;
+                entryEdit.modifiedDate = moment();
             }
-            if (entry.id !== id) {
-                entry = '';
-            }
-        }
-        return {};
+        });
+        return entryEdit;    
     }
 }
 
+
 export default new EntriesModel();
-export { entries };
