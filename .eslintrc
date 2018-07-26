@@ -11,7 +11,7 @@
         "import/no-unresolved": "off",
         "no-var": "off",
         "vars-on-top":"off",
-        "prefer-destructuring": "off"
+        "no-restricted-syntax": "off"
     },
     "parser": "babel-eslint",
     "parserOptions": {

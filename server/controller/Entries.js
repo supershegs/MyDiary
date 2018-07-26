@@ -1,22 +1,48 @@
 import EntryModel from '../model/EntriesModel';
 
 const Entries = {
-    create(req, res) {
-        const newEntry = EntryModel.add(req.body);
-        return res.send(newEntry);
+    /**
+     * 
+     * @param {object} request 
+     * @param {object} response 
+     * @return {object} response 
+     */
+    create(request, response) {
+        const newEntry = EntryModel.add(request.body);
+        if (request.body.title === undefined || request.body.story === undefined) {
+            return response.send('Nothing was add');
+        }
+        return response.send(newEntry);
     },
-    getAll(req, res) {
+    /**
+     * 
+     * @param {object} response
+     * @return {object} response
+     */
+    getAll(request, response) {
         const allEntries = EntryModel.findAll();
-        return res.send(allEntries);
+        return response.send(allEntries);
     },
-    getOne(req, res) {
-        console.log(req.params.id);
-        const anEntry = EntryModel.findOne(req.params.id);
-        return res.send(anEntry);
+    /**
+     * @param {object} request
+     * @param {object} response
+     * @return {object} response
+     */
+
+    getOne(request, response) {
+        const anEntry = EntryModel.findOne(request.params.id);
+        return response.send(anEntry);
     },
-    update(req, res) {
-        const editEntry = EntryModel.edit(req.params.id, req.body);
-        return res.send({ editEntry });
+
+    /**
+     * 
+     * @param {object} request  
+     * @param {object} response
+     * @return {object} response
+     */
+    update(request, response) {
+        const editEntry = EntryModel.edit(request.params.id, request.body);
+        return response.send({ editEntry });
     },
 };
 
