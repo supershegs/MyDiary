@@ -41,8 +41,9 @@ describe('To POST an entry', () => {
         expect(entryThree.story).toBe(init.story);
         expect(entryThree.createdDate).not.toBe(init.createdDate);
         expect(entryThree.modifiedDate).not.toBe(init.modifiedDate);
+        console.log('test passed');
         done();
-      });
+      }); 
     });
   });
 });
@@ -55,6 +56,7 @@ describe('To GET all entries', () => {
       request.post(entriesUrl, (error, response) => {
         expect(response.statusCode).toBe(200);
         expect(list).toBe(init);
+        console.log('test passed');
         done();
       });
     });
@@ -68,6 +70,7 @@ describe('To GET an entry', () => {
         expect(response.statusCode).toBe(200);
         expect(entries.id).toBeUndefined();
         expect(init.title).toBe('My new lodge');
+        console.log('test passed');
         done();
       });
     });
@@ -75,14 +78,18 @@ describe('To GET an entry', () => {
 });
 describe('To Edit an entry', () => {
   describe('GET /api/v1/entries/:id', () => {
-    const init = EntriesModel.edit(entries[1].id, entries[1]);
+    const data = { title: 'A good day', story: 'What a blessed day' };
+    const init = EntriesModel.edit(entries[1].id, data);
     it('To PUT entry body', (done) => {
       request.put(entriesUrl, (error, response) => {
         expect(response.statusCode).toBe(404);
-        console.log('Test passed');
+        expect(entryTwo.id).toEqual(init.id);
+        expect(entryTwo.title).toBe(init.title);
+        expect(entryTwo.story).toBe(init.story);
+        expect(entryTwo).toBe(init);
         done();
+        console.log('test passed');
       });
     });
   });
 });
-
