@@ -3,16 +3,16 @@ import EntryModel from '../model/EntriesModel';
 const Entries = {
   /**
    *
-   * @param {object} request 
-   * @param {object} response 
-   * @return {object} response 
+   * @param {object} request body
+   * @param {object} response
+   * @return {object} response  newEntry
    */
   create(request, response) {
     const newEntry = EntryModel.add(request.body);
     if (request.body.title === undefined || request.body.story === undefined) {
-      return response.send('Nothing was add');
+      throw new Error('Nothing was added');
     }
-    return response.send(newEntry);
+    return response.status(200).send(newEntry);
   },
   /**
    *
@@ -21,7 +21,7 @@ const Entries = {
    */
   getAll(request, response) {
     const allEntries = EntryModel.findAll();
-    return response.send(allEntries);
+    return response.status(200).send(allEntries);
   },
   /**
    * @param {object} request
@@ -31,18 +31,18 @@ const Entries = {
 
   getOne(request, response) {
     const anEntry = EntryModel.findOne(request.params.id);
-    return response.send(anEntry);
+    return response.status(200).send(anEntry);
   },
 
   /**
-   *
-   * @param {object} request 
+   * @param {object} request id
+   * @param {object} request body
    * @param {object} response
-   * @return {object} response
+   * @return {object} response editEntry
    */
   update(request, response) {
     const editEntry = EntryModel.edit(request.params.id, request.body);
-    return response.send({ editEntry });
+    return response.status(200).send({ editEntry });
   },
 
 };
