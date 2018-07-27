@@ -26,9 +26,6 @@ npm documentation
 w3school
 friends and well wisher
 
-
-
-
  Required Features 
 Users can create an account and log in.  
 Users can view all entries to their diary.  
@@ -42,3 +39,12 @@ the UI design are inside the UI folder
 Task
 Write tests for the API endpoints
 Ensure to test all endpoints and see that they work using Postman.
+
+Badge
+# MyDiary
+[![Build Status](https://travis-ci.org/supershegs/MyDiaryUI.github.io.svg?branch=master-implement-continuous-integration-159168886)]https://travis-ci.org/supershegs/MyDiary/
+[![Coverage Status](https://coveralls.io/repos/github/supershegs/MyDiary/badge.svg)](https://coveralls.io/github/supershegs/MyDiary)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8c8e93f8605acff751f6/maintainability)](https://codeclimate.com/github/supershegs/MyDiary/maintainability)
+
+An online journal where users can pen down their thoughts and feelings.
+Please take a preview [here](https://supershegs.github.io/MyDiary/UI/).

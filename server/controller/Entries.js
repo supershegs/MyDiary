@@ -1,4 +1,5 @@
 import EntryModel from '../model/EntriesModel';
+import add from '../config';
 
 const Entries = {
     /**
@@ -44,6 +45,7 @@ const Entries = {
         const editEntry = EntryModel.edit(request.params.id, request.body);
         return response.send({ editEntry });
     },
+    
 };
 
 export default Entries;

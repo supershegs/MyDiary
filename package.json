@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf build/&& babel --copy-files ./ --out-dir build/ --ignore ./node_modules,./UI",
     "start-build": "node build/server.js",
+    "coverage": "",
     "start": "babel-watch server.js",
     "server": "node server.js",
     "lint": "eslint **/*.js",
@@ -28,6 +29,7 @@
     "express": "^4.16.3",
     "moment": "^2.22.2",
     "morgan": "^1.9.0",
+    "pg": "^7.4.3",
     "request": "^2.87.0",
     "uuid": "^3.3.2"
   },
@@ -37,6 +39,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
+    "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.12.0",

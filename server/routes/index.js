@@ -9,5 +9,6 @@ router.post('/v1/entries', Entries.create);
 router.get('/v1/entries/:id', Entries.getOne);
 router.put('/v1/entries/:id', Entries.update);
 
+router.post('v1/auth/signup');
 
 export default router;
