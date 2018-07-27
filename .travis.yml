@@ -3,5 +3,8 @@ node_js:
 - "stable"
 install:
   - npm install
-script:
-  - npm run watch
+script: 
+  - npm run test
+  
+
+

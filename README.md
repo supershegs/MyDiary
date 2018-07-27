@@ -1,6 +1,35 @@
-Project Name: My Diary
-Project Overview:  MyDiary is an online journal where users can pen down their thoughts and feelings.  
-    Required Features 
+Project Name: MyDiary
+ MyDiary is an online journal where users can pen down their thoughts and feelings.  
+   
+   Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system
+Software to install to reused the codes for development
+A browser like google, mozilla to output your display.
+Get to download and install node.
+get a text editor like visual studio or sublime.
+open the project with text editor listed above and typed in npm install into the terminal to install the neccessary development tools and framework for the program to run
+
+Running the test
+Type in npm test to test all the endpoint and see whether they pass the test or not.
+
+type in npm start to run the application and watch for the server is running on port 3000 before browsing through the web application
+
+Built With 
+Express - the javascript framework for server
+Jasmine - To test the api endpoint, so as to be sure that they are functioning 
+Versioning
+We adopt our technical for versioning the root. For the versions available, see the tags on this repository.
+Acknowledgments
+Hat tip to anyone whose code was used
+Inspiration
+npm documentation
+w3school
+friends and well wisher
+
+
+
+
+ Required Features 
 Users can create an account and log in.  
 Users can view all entries to their diary.  
 Users can view the contents of a diary entry.  
@@ -9,3 +38,7 @@ Users can add or modify an entry. 
 Having two section
 The front-end and back-end
 the UI design are inside the UI folder
+
+Task
+Write tests for the API endpoints
+Ensure to test all endpoints and see that they work using Postman.

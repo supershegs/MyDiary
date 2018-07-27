@@ -7,7 +7,16 @@
         "eol-last":"off",
         "no-unused-vars": "off",
         "no-trailing-spaces":"off",
-        "import/order": "off"
+        "import/order": "off",
+        "import/no-unresolved": "off",
+        "no-var": "off",
+        "vars-on-top":"off",
+        "no-restricted-syntax": "off"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "env": {
         "browser": true,
