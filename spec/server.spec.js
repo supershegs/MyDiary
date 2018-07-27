@@ -39,8 +39,8 @@ describe('Entry API Unit Tests', () => {
     it('Get an entry with a valid entryId', (done) => {
       Request.get(`/api/v1/entries/${inputEntryId}`)
         .end((error, response) => {
-          console.log('id here === ', inputEntryId);
-          console.log(response.body);
+          // console.log('id here === ', inputEntryId);
+          // console.log(response.body);
           expect(response.status).toEqual(200);
           expect(response.body.id).toEqual(inputEntryId);
           expect(response.body.title).toEqual(entry.title);

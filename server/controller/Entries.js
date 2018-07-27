@@ -1,5 +1,4 @@
 import EntryModel from '../model/EntriesModel';
-import add from '../config';
 
 const Entries = {
     /**
