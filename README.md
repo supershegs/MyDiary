@@ -1,5 +1,12 @@
-##  Build status
+
+
+# MyDiary Badge (build status, coverage status and Maintainability)
 [![Build Status](https://travis-ci.org/supershegs/MyDiary.svg?branch=diary)](https://travis-ci.org/supershegs/MyDiary)
+[![Coverage Status](https://coveralls.io/repos/github/supershegs/MyDiary/badge.svg)](https://coveralls.io/github/supershegs/MyDiary)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8c8e93f8605acff751f6/maintainability)](https://codeclimate.com/github/supershegs/MyDiary/maintainability)
+
+An online journal where users can pen down their thoughts and feelings.
+Please take a preview [here](https://supershegs.github.io/MyDiary/UI/).
 
 #Project Name: MyDiary
  MyDiary is an online journal where users can pen down their thoughts and feelings.  
@@ -30,13 +37,12 @@ type in npm start to run the application and watch for the server is running on 
 ### End point tested
 >**Base Url** = `api/v1/entries/`
 
-|Http-Method | Url                        |
-`````````````|:```````````````````````````:|
-| POST       | /entries                    |
-| GET        |  **\ /entries/<entry id>**  |
-| GET        |  **\ /entries**             |
-| PUT        |  **\ /entries/<entry id>**  |
-|
+|Http-Method  | Url                         |
+|`````````````|`````````````````````````````|
+| POST        | /entries                    |
+| GET         |  **\ /entries/<entry id>**  |
+| GET         |  **\ /entries**             |
+| PUT         |  **\ /entries/<entry id>**  |
 
 ##  Tools used (Built With) 
 Express - the javascript framework for server
@@ -65,11 +71,3 @@ Write tests for the API endpoints
 Ensure to test all endpoints and see that they work using Postman.
 
 
-
-# MyDiary Badge
-[![Build Status](https://travis-ci.org/supershegs/MyDiary.svg?branch=diary)](https://travis-ci.org/supershegs/MyDiary)
-[![Coverage Status](https://coveralls.io/repos/github/supershegs/MyDiary/badge.svg)](https://coveralls.io/github/supershegs/MyDiary)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8c8e93f8605acff751f6/maintainability)](https://codeclimate.com/github/supershegs/MyDiary/maintainability)
-
-An online journal where users can pen down their thoughts and feelings.
-Please take a preview [here](https://supershegs.github.io/MyDiary/UI/).
