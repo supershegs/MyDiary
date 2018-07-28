@@ -71,5 +71,21 @@ class EntriesModel {
     });
     return entryEdit;
   }
+  /**
+   *
+   * @param {object} id
+   * @param {object} data
+   */
+
+  delete(id, data) {
+    let deleteEdit = {};
+    this.entries.forEach((entry, index) => {
+      if (entry.id === id) {
+        deleteEdit = entry;
+        this.entries.splice(index, 1);
+      }
+    });
+    return this.entries;
+  }
 }
 export default new EntriesModel();

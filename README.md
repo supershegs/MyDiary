@@ -37,16 +37,16 @@ type in npm start to run the application and watch for the server is running on 
 ### End point tested
 >**Base Url** = `api/v1/entries/`
 
-|Http-Method  | Url                         |
-|`````````````|`````````````````````````````|
-| POST        | /entries                    |
-| GET         |  **\ /entries/<entry id>**  |
-| GET         |  **\ /entries**             |
-| PUT         |  **\ /entries/<entry id>**  |
+|Http-Method | URL |
+|---|---|
+| POST| /entries|
+| GET|** /entries/*entryId* ** |
+| GET|** /entries**|
+| PUT|** /entries/*entryId* **|
 
 ##  Tools used (Built With) 
 Express - the javascript framework for server
-Jasmine - To test the api endpoint, so as to be sure that they are functioning 
+Mocha - To test the api endpoint, so as to be sure that they are functioning 
 Versioning
 We adopt our technical for versioning the root. For the versions available, see the tags on this repository.
 Acknowledgments
