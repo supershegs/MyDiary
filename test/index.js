@@ -10,6 +10,7 @@ import deleteEntry from './deleteEntry';
 const url = 'http://localhost:3000/api/v1';
 const urlHigher = 'http://localhost:3000/api/v2';
 const urlNO = 'http://localhost:3000/api/v1/cool';
+
 describe('GET /api/v1', () => {
   it('To test version response status', (done) => {
     request.get(url, (error, response, body) => {

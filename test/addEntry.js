@@ -1,9 +1,8 @@
 import chai, { expect } from 'chai';
 import supertest from 'supertest';
-import app, { closeServer } from '../server';
+import app from '../server';
 
 const Request = supertest(app);
-const url = 'http://localhost:3000/api/entries';
 const entry = {
   title: 'My new lodge',
   story: 'My new home is located at',
