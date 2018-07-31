@@ -1,4 +1,4 @@
-import EntryModel from '../model/EntriesModel';
+import EntryModel from '../models/EntriesModel';
 
 const Entries = {
   /**
