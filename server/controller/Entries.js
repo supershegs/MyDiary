@@ -45,7 +45,7 @@ const Entries = {
     return response.send({ editEntry });
   },
   /**
-   * 
+   *
    * @param {object} request id
    * @param {object} request body
    * @param {*} response deleteEntry
