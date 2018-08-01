@@ -1,4 +1,5 @@
 const notify = `CREATE TABLE IF NOT EXISTS notification(
-  id SERIAL PRIMARY KEY, value BOOLEAN DEFAULT false,);`;
+  id uuid PRIMARY KEY, 
+  value BOOLEAN DEFAULT false)`;
 
 export default notify;
