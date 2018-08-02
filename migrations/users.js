@@ -1,7 +1,7 @@
 const users = `CREATE TABLE IF NOT EXISTS users(
 id uuid PRIMARY KEY,
-name TEXT,
-username VARCHAR(40) UNIQUE,
-password TEXT)`;
+name TEXT NOT NULL,
+username VARCHAR(40) UNIQUE NOT NULL,
+password TEXT NOT NULL)`;
 
 export default users;

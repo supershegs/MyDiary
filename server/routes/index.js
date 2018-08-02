@@ -13,4 +13,5 @@ router.get('/v1/entries/:id', Entries.getOne);
 router.put('/v1/entries/:id', Entries.update);
 router.delete('/v1/entries/:id', Entries.remove);
 
+
 export default router;
