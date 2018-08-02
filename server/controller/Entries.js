@@ -9,12 +9,11 @@ const Entries = {
    */
   create(request, response) {
     const newEntry = EntryModel.add(request.body);
-    const titl = request.body.title;
-    const stor = request.body.story;
-    if (titl === undefined || stor === undefined) {
+    const { title, story } = request.body;
+    if (title === undefined || story === undefined) {
       throw new Error('Nothing was added');
     }
-    if (titl.length === 0 || stor.length === 0) {
+    if (title.length === 0 || story.length === 0) {
       throw new Error('No value for the database');
     }
     return response.send(newEntry);
