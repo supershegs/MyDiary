@@ -30,7 +30,6 @@ const Entries = {
     });
   },
   getAll(request, response) {
-    // console.log(id);
     client.query(EntryQueries.getEntriesQuery, (err, res) => {
       if (err) {
         throw new Error('Entry not inserted', err);
