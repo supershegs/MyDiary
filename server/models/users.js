@@ -1,7 +1,5 @@
 import { Client } from 'pg';
 import dotenv from 'dotenv';
-import uuidv4 from 'uuid/v4';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 dotenv.config();
@@ -22,7 +20,7 @@ class Usermodel {
     hashing(data.password)
       .then((res) => {
         const user = {
-          id: uuidv4(),
+          id: data.id,
           name: data.name,
           username: data.username,
           password: res,
