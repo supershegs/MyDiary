@@ -2,3 +2,4 @@
 build
 .coveralls.yml
 .nyc_output
+.env

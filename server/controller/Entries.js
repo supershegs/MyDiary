@@ -1,4 +1,4 @@
-import EntryModel from '../model/EntriesModel';
+import EntryModel from '../models/EntriesModel';
 
 const Entries = {
   /**
@@ -9,8 +9,12 @@ const Entries = {
    */
   create(request, response) {
     const newEntry = EntryModel.add(request.body);
-    if (request.body.title === undefined || request.body.story === undefined) {
+    const { title, story } = request.body;
+    if (title === undefined || story === undefined) {
       throw new Error('Nothing was added');
+    }
+    if (title.length === 0 || story.length === 0) {
+      throw new Error('No value for the database');
     }
     return response.send(newEntry);
   },
@@ -45,7 +49,7 @@ const Entries = {
     return response.send({ editEntry });
   },
   /**
-   * 
+   *
    * @param {object} request id
    * @param {object} request body
    * @param {*} response deleteEntry

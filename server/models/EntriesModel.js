@@ -1,5 +1,20 @@
 import moment from 'moment';
 import uuidV4 from 'uuid/v4';
+import { Client } from 'pg';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
+const client = new Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
+});
+
+client.connect();
+
 /**
  * Class representing a EntriesModel.
  */
@@ -12,10 +27,10 @@ class EntriesModel {
     this.entries = [];
   }
   /**
-     * To Add object data-entry
-     * @param {object} data
-     * @return {object} entry
-     */
+   * To Add object data-entry
+   * @param {object} data
+   * @return {object} entry
+   */
 
   add(data) {
     const entry = {
@@ -26,6 +41,18 @@ class EntriesModel {
       modifiedDate: moment(),
     };
     this.entries.push(entry);
+    // const text = `INSERT INTO entries
+    // (id, title, story,createdDate,modified)
+    // VALUES($1, $2, $3, $4, $5) RETURNING *`;
+    // const values = [entry.id, entry.title, entry.story, entry.createdDate, entry.modifiedDate];
+    // client.query(text, values, (err, res) => {
+    //   if (err) {
+    //     console.log('Entry not inserted', err);
+    //   } else {
+    //     const result = res.rows;
+    //     this.entries.push(result);
+    //   }
+    // });
     return entry;
   }
   /**

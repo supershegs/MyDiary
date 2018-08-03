@@ -7,7 +7,7 @@
     "build": "rimraf build/&& babel --copy-files ./ --out-dir build/ --ignore ./node_modules,./UI",
     "start-build": "node build/server.js",
     "start": "babel-watch server.js",
-    "server": "node server.js",
+    "server": "node node_modules/.bin/babel server.js",
     "lint": "eslint **/*.js",
     "test": "nyc mocha test/ --require babel-core/register -t 5000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -23,11 +23,15 @@
   },
   "homepage": "https://github.com/supershegs/MyDiary#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.0",
+    "nodemon": "^1.18.3",
     "pg": "^7.4.3",
     "uuid": "^3.3.2"
   },

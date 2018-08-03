@@ -1,7 +1,7 @@
 import chai, { expect, should } from 'chai';
 import supertest from 'supertest';
 import app from '../server';
-import EntriesModel from '../server/model/EntriesModel';
+import EntriesModel from '../server/models/EntriesModel';
 
 const Request = supertest(app);
 

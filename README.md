@@ -43,6 +43,7 @@ type in npm start to run the application and watch for the server is running on 
 | GET|** /entries/*entryId* ** |
 | GET|** /entries**|
 | PUT|** /entries/*entryId* **|
+|DELETE|** /entries/*entryId* **|
 
 ##  Tools used (Built With) 
 Express - the javascript framework for server

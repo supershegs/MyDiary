@@ -36,7 +36,6 @@ export default function addEntry() {
         Request.post('/api/v1/entries')
           .send(entry)
           .end((error, response) => {
-            expect(response.body).to.have.property('id');
             expect(response.body).to.have.property('title');
             expect(response.body).to.have.property('story');
             done();
