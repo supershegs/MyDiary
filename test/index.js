@@ -1,11 +1,12 @@
 import chai, { expect } from 'chai';
 import request from 'request';
 import app from '../server';
-import addEntry from './addEntry';
-import getAllEntries from './getAllEntries';
-import getAnEntry from './getAnEntry';
-import editEntry from './editEntry';
-import deleteEntry from './deleteEntry';
+import userTest from './user';
+// import addEntry from './addEntry';
+// import getAllEntries from './getAllEntries';
+// import getAnEntry from './getAnEntry';
+// import editEntry from './editEntry';
+// import deleteEntry from './deleteEntry';
 
 const url = 'http://localhost:3000/api/v1';
 const urlHigher = 'http://localhost:3000/api/v2';
@@ -32,6 +33,13 @@ describe('GET /api/v2', () => {
       done();
     });
   });
+  it('if not in verion error check', (done) => {
+    request.get(urlHigher, (error, response, body) => {
+      expect(error).to.equal(null);
+      expect(body).to.equal('{"error":{"message":"Not found"}}');
+      done();
+    });
+  });
 });
 describe('GET /api/v2', () => {
   it('if it is a higher version', (done) => {
@@ -40,9 +48,17 @@ describe('GET /api/v2', () => {
       done();
     });
   });
+  it('if it is a higher verion error check', (done) => {
+    request.get(urlHigher, (error, response, body) => {
+      expect(error).to.equal(null);
+      expect(body).to.equal('{"error":{"message":"Not found"}}');
+      done();
+    });
+  });
 });
-addEntry();
-getAllEntries();
-getAnEntry();
-editEntry();
-deleteEntry();
+userTest();
+// addEntry();
+// getAllEntries();
+// getAnEntry();
+// editEntry();
+// deleteEntry();

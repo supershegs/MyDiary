@@ -39,10 +39,10 @@ const Entries = {
       } else {
         client.query(`SELECT * FROM entries where user_id = '${result.id}' `, (error, res) => {
           if (error) {
-            response.status(201).json({ err: error });
+            response.status(404).json({ err: error });
           } else {
             const allUserEntries = res.rows;
-            response.status(201).json({ message: allUserEntries });
+            response.status(200).json({ message: allUserEntries });
           }
         });
       }
@@ -52,49 +52,36 @@ const Entries = {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(201).json(err);
+        response.status(404).json(err);
       } else {
         client.query('SELECT * FROM entries', (error, res) => {
           if (error) {
-            response.status(201).json(error);
+            response.status(404).json(error);
           } else {
             const allEntries = res.rows;
-            response.status(201).json({ message: allEntries });
+            response.status(200).json({ message: allEntries });
           }
         });
       }
     });
   },
-  // }
-  //   /**
-  //    * @param {object} request
-  //    * @param {object} response
-  //    * @return {object} response
-  //    */
-
   getOne(request, response) {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(201).json(err);
+        response.status(404).json(err);
       } else {
         client.query(`SELECT * FROM entries where id = '${request.params.id}'`, (error, res) => {
           if (error) {
-            response.status(201).json(error);
+            response.status(404).json(error);
           } else {
             const anEntry = res.rows;
-            response.status(201).json({ message: anEntry });
+            response.status(200).json({ message: anEntry });
           }
         });
       }
     });
   },
-  //   /**
-  //    * @param {object} request id
-  //    * @param {object} request body
-  //    * @param {object} response
-  //    * @return {object} response editEntry
-  //    */
   update(request, response) {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
@@ -107,19 +94,12 @@ const Entries = {
           if (error) {
             response.status(404).json({ err: error });
           } else {
-            const editEntry = res.rows;
-            response.status(201).json({ message: 'Edited successful, click on get to view' });
+            response.status(204).json({ message: 'Edited successful, click on get to view' });
           }
         });
       }
     });
   },
-  //   /**
-  //    *
-  //    * @param {object} request id
-  //    * @param {object} request body
-  //    * @param {*} response deleteEntry
-  //    */
   remove(request, response) {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
@@ -131,7 +111,7 @@ const Entries = {
           if (error) {
             response.status(404).json({ err: error });
           } else {
-            response.status(201).json({ message: 'Deleted successfully' });
+            response.status(202).json({ message: 'Deleted successfully' });
           }
         });
       }
