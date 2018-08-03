@@ -47,6 +47,15 @@ const Entries = {
         });
       }
     });
+    const newEntry = EntryModel.add(request.body);
+    const { title, story } = request.body;
+    if (title === undefined || story === undefined) {
+      throw new Error('Nothing was added');
+    }
+    if (title.length === 0 || story.length === 0) {
+      throw new Error('No value for the database');
+    }
+    return response.send(newEntry);
   },
   getAll(request, response) {
     const token = request.headers.authorization.split(' ')[1];
