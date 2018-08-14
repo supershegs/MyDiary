@@ -34,7 +34,7 @@ const Entries = {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(404).json(err);
+        response.status(401).json(err);
       } else {
         client.query(`SELECT * FROM entries where user_id = '${result.id}' `, (error, res) => {
           if (error) {
@@ -51,7 +51,7 @@ const Entries = {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(201).json(err);
+        response.status(401).json(err);
       } else {
         client.query(`SELECT * FROM entries where id = '${request.params.id}'`, (error, res) => {
           if (error) {
@@ -68,7 +68,7 @@ const Entries = {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(404).json({ error: err });
+        response.status(401).json({ error: err });
       } else {
         const { title, story } = request.body;
         client.query(`UPDATE entries SET title = '${title}', story = '${story}' 
@@ -76,8 +76,8 @@ const Entries = {
           if (error) {
             response.status(404).json({ err: error });
           } else {
-            const editEntry = res.rows;
-            response.status(204).json({ message: 'Edited successful, click on get to view' });
+            // const editEntry = res.rows;
+            response.status(201).json({ message: 'Edited successful, click on get to view' });
           }
         });
       }
@@ -87,7 +87,7 @@ const Entries = {
     const token = request.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, process.env.SECRET_JWT_KEY, (err, result) => {
       if (err) {
-        response.status(404).json({ error: err });
+        response.status(401).json({ error: err });
       } else {
         const { title, story } = request.body;
         client.query(`DELETE FROM entries where id = '${request.params.id}'`, (error, res) => {
