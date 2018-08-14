@@ -19,12 +19,14 @@ function hashing(password) {
 class Usermodel {
   static users(data) {
     let users;
-    hashing(data.password)
+    const space = /\s/g;
+    const passwordEdit = data.password.replace(space, '');
+    hashing(passwordEdit)
       .then((res) => {
         const user = {
           id: uuidv4(),
-          name: data.name,
-          username: data.username,
+          name: data.name.trim(),
+          username: data.username.replace(space, ''),
           password: res,
         };
         client.query(`SELECT * from users WHERE username = '${user.username}' `, (error, output) => {
@@ -47,6 +49,7 @@ class Usermodel {
                       throw new Error(err);
                     } else {
                       users = (result.rows);
+                      console.log(users);
                     }
                   });
                 }

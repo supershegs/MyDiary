@@ -19,25 +19,32 @@ client.connect();
 const users = {
   createUser(request, response) {
     const { username, password } = request.body;
+    const space = /\s/g;
+    const usernameEdit = username.replace(space, '');
     userModel.users(request.body);
     if (username.length === 0 || username === '') {
       response.status(404).json({ error: 'Sign up failed check the your username' });
     }
+
     if (password.length === 0 || password === '') {
       response.status(404).json({ error: 'Sign up failed, please fill the password' });
     }
-    client.query(`SELECT * from users WHERE username = '${username}' `, (error, output) => {
-      if (error) {
-        throw new Error('error met', error);
-      } if (output) {
-        const findList = output.rows;
-        if (findList.length > 0) {
-          response.status(406).json({ message: 'username already in used' });
-        } else if (findList.length < 0 || findList) {
-          response.status(201).json({ message: 'successfully added' });
+    if (password.match(space)) {
+      response.status(201).json('password has space but the space will be removed, successfully added');
+    } else {
+      client.query(`SELECT * from users WHERE username = '${usernameEdit}' `, (error, output) => {
+        if (error) {
+          throw new Error('error met', error);
+        } if (output) {
+          const findList = output.rows;
+          if (findList.length > 0) {
+            response.status(406).json({ message: 'username already in used' });
+          } else if (findList.length < 0 || findList) {
+            response.status(201).json({ message: 'successfully added' });
+          }
         }
-      }
-    });
+      });
+    }
   },
   authUser(request, response) {
     const user = {
