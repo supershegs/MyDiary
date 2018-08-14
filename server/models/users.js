@@ -1,8 +1,7 @@
 import { Client } from 'pg';
 import dotenv from 'dotenv';
-import uuidv4 from 'uuid/v4';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import uuidv4 from 'uuid/v4';
 
 dotenv.config();
 const client = new Client({
