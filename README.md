@@ -39,7 +39,7 @@ type in npm start to run the application and watch for the server is running on 
 >**Base Url for entries** = `api/v1/entries/`
 
 | Http-Method | URL | funtionality |
-|---|---|
+|---|---|---|
 |POST|** /auth/signup **|Register a user|
 |POST|** /auth/login **|Login a user|
 | POST| /entries|Register a user|Add an entry by a signed in user|
