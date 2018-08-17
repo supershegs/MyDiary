@@ -1,63 +1,78 @@
 import chai, { expect } from 'chai';
 import request from 'request';
 import app from '../server';
-import userTest from './user';
-// import addEntry from './addEntry';
+import dbConnect from './dbconnection';
+import entries from './entries';
+import authentication from './auth';
 // import getAllEntries from './getAllEntries';
 // import getAnEntry from './getAnEntry';
 // import editEntry from './editEntry';
 // import deleteEntry from './deleteEntry';
 
-const url = 'http://localhost:3000/api/v1';
-const urlHigher = 'http://localhost:3000/api/v2';
+const urlVer1 = 'http://localhost:3000/api/v1';
+const urlVer2 = 'http://localhost:3000/api/v2';
 const urlNO = 'http://localhost:3000/api/v1/cool';
+const authUrl = 'http://localhost:3000/api/v1/auth';
 
 describe('GET /api/v1', () => {
   it('To test version response status', (done) => {
-    request.get(url, (error, response, body) => {
+    request.get(urlVer1, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
       done();
     });
   });
-  it('To test version response body', (done) => {
-    request.get(url, (error, response, body) => {
+  it('The response body should be version one is ok', (done) => {
+    request.get(urlVer1, (error, response, body) => {
       expect(body).to.equal('version one is ok');
       done();
     });
   });
 });
 describe('GET /api/v2', () => {
-  it('if not in version one', (done) => {
+  it('version two response status', (done) => {
+    request.get(urlVer2, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+  it('The response body should be not yet available', (done) => {
+    request.get(urlVer2, (error, response, body) => {
+      expect(body).to.equal('version two not yet available');
+      done();
+    });
+  });
+});
+describe('GET /api/v1/cool', () => {
+  it('url link not in v1 or v2 response status', (done) => {
     request.get(urlNO, (error, response, body) => {
       expect(response.statusCode).to.equal(404);
       done();
     });
   });
-  it('if not in verion error check', (done) => {
-    request.get(urlHigher, (error, response, body) => {
-      expect(error).to.equal(null);
+  it('The response body should be error message', (done) => {
+    request.get(urlNO, (error, response, body) => {
       expect(body).to.equal('{"error":{"message":"Not found"}}');
       done();
     });
   });
 });
-describe('GET /api/v2', () => {
-  it('if it is a higher version', (done) => {
-    request.get(urlHigher, (error, response, body) => {
-      expect(response.statusCode).to.equal(404);
+describe('GET /api/v1/auth', () => {
+  it('Authentication test', (done) => {
+    request.get(authUrl, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
       done();
     });
   });
-  it('if it is a higher verion error check', (done) => {
-    request.get(urlHigher, (error, response, body) => {
-      expect(error).to.equal(null);
-      expect(body).to.equal('{"error":{"message":"Not found"}}');
+  it('To test version response body(content)', (done) => {
+    request.get(authUrl, (error, response, body) => {
+      expect(body).to.equal('{"message":"Authictaion is working"}');
       done();
     });
   });
 });
-userTest();
-// addEntry();
+dbConnect();
+entries();
+authentication();
 // getAllEntries();
 // getAnEntry();
 // editEntry();
