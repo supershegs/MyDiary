@@ -48,9 +48,12 @@ const users = {
       username: request.body.username,
       password: request.body.password,
     };
+    if (user.username === null || user.username === '') {
+      return response.status(400).json({ err: 'username is empty' });
+    }
     if (user.password === null || user.password === '') {
-      response.status(401).json({ err: 'password empty' });
-    } else if (user.username.length > 0 || user.password > 0) {
+      return response.status(400).json({ err: 'password is empty' });
+    } if (user.username.length > 0 || user.password > 0) {
       client.query(`SELECT * from users WHERE username = '${user.username}' `, (err, result) => {
         if (err) {
           response.status(401).json({ error: 'Authentication Failed', err });
@@ -58,7 +61,7 @@ const users = {
           const seen = result.rows;
           if (seen.length === 0) {
             response.status(401).json({ message: 'User Not Found, Failed' });
-          } else if (seen.length > 0) {
+          } if (seen.length > 0) {
             bcrypt.compare(user.password, seen[0].password, (error, accept) => {
               if (error) {
                 response.status(401).json({
@@ -77,10 +80,10 @@ const users = {
                 response.status(201).json({
                   message: 'Authentication Passed',
                   status: accept,
-                  token_key: token,
+                  tokenKey: token,
                 });
-              } else if (accept === false) {
-                response.status(401).json({ err: 'password failed' });
+              } if (accept === false) {
+                response.status(401).json({ err: 'wrong password, check your password' });
               }
             });
           }
@@ -89,6 +92,7 @@ const users = {
     } else {
       response.status(401).json({ err: 'fail completely' });
     }
+    return user;
   },
 };
 

@@ -3,7 +3,7 @@ import request from 'request';
 import app from '../server';
 import dbConnect from './dbconnection';
 import entries from './entries';
-import authentication from './auth';
+import register, { authentication } from './auth';
 // import getAllEntries from './getAllEntries';
 // import getAnEntry from './getAnEntry';
 // import editEntry from './editEntry';
@@ -73,6 +73,7 @@ describe('GET /api/v1/auth', () => {
 dbConnect();
 entries();
 authentication();
+register();
 // getAllEntries();
 // getAnEntry();
 // editEntry();
