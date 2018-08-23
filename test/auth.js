@@ -10,22 +10,7 @@ const newUser = {
 };
 const user = { username: 'test', password: 'test' };
 export function authentication() {
-  let token;
   describe('POST /api/v1/auth/login', () => {
-    before((done) => {
-      it('it should create toke with correct login detials', () => {
-        Request.post('/api/v1/auth/login')
-          .send(user).end((err, res) => {
-            if (err) {
-              throw err;
-            } else if (res) {
-              const { tokenKey, message, status } = res.body;
-              token = tokenKey;
-            }
-          });
-      });
-      done();
-    });
     it('it should successfully login with the right register user and successful create a token for the user',
       (done) => {
         Request.post('/api/v1/auth/login').send(user)
@@ -35,6 +20,7 @@ export function authentication() {
             expect(response.body).to.have.property('tokenKey');
             expect(response.body).to.have.property('message');
             expect(response.body).to.have.property('status');
+            expect(response.body.status).to.equal(true);
             done();
           });
       });
@@ -78,7 +64,7 @@ export function authentication() {
 }
 export default function register() {
   describe('POST To Test /api/v1/auth/signup', () => {
-    it('To the signup route response status and to make sure it created successfully', (done) => {
+    it('To check the signup route response status and to make sure it was created successfully', (done) => {
       Request.post('/api/v1/auth/signup').send(newUser).end((error, response) => {
         expect(response.status).to.equal(201);
         expect(response).to.be.an('object');
@@ -86,10 +72,9 @@ export default function register() {
       });
     });
     it('To sent a message that user successfully added after creating user', (done) => {
-      Request.post('/api/v1/auth/signup').send(newUser).end((error, response, request, body) => {
+      Request.post('/api/v1/auth/signup').send(newUser).end((error, response) => {
         expect(response.text).to.equal('user successfully added');
         expect(response.body).to.be.an('object');
-        expect(request).to.equal(undefined);
         done();
       });
     });
@@ -131,3 +116,4 @@ export default function register() {
     });
   });
 }
+// console.log('oh boy', token);

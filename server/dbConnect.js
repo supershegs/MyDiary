@@ -18,9 +18,9 @@ client.connect();
 
 client.query(`${users}; ${entries}; ${notify}`, (err, res) => {
   if (err) {
-    console.log('Database not created', err);
+    throw err;
   } else {
-    console.log('Database successfully created');
+    const list = res;
   }
   client.end();
 });

@@ -6,11 +6,11 @@ dotenv.config();
 const tokenAuthentication = {
   token(request, response, next) {
     try {
-      const decode = jwt.verify(request.body.token, process.env.SECRET_JWT_KEY);
-      request.userid = decode;
-      next();
+      const token = request.headers.authorization.split(' ')[1];
+      const decode = jwt.verify(token, process.env.SECRET_JWT_KEY);
+      return decode;
     } catch (error) {
-      response.status(401).json({
+      return response.status(401).json({
         message: 'Authentication Failed',
         err: error,
       });
